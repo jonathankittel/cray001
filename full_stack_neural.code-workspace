@@ -1,0 +1,16 @@
+{
+	"folders": [
+        {
+            "path": "main"
+        },
+        {
+            "path": "neurostack"
+        },
+        {
+            "path": "static"
+        },
+        {
+            "path": "src"
+        }
+    ]
+}

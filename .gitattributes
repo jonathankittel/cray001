@@ -1,0 +1,2 @@
+# Set line endings explicitly
+*.py text eol=lf

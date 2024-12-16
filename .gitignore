@@ -1,0 +1,30 @@
+# Ignore Python virtual environment
+venv/
+neurostack/
+__pycache__/
+*.pyc
+
+# Ignore TypeScript output
+static/*.js
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore environment files
+*.env
+# Ignore Python virtual environment
+venv/
+neurostack/
+__pycache__/
+*.pyc
+
+# Ignore TypeScript output
+static/*.js
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore environment files
+*.env

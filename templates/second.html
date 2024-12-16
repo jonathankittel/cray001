@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <script src="{{ url_for('static', filename='ts_output.js') }}" defer></script>
+</head>
+<body>
+    <h1>Second Page with TypeScript</h1>
+    <form id="userForm" data-endpoint="/submit">
+        <label for="userInput">Enter some text:</label>
+        <input type="text" id="userInput" name="userInput" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="output"></p>
+    
+    <p>
+        Want to try Matrix Multiplication? 
+        <a href="{{ url_for('third_page') }}">Go to the Third Page</a>
+    </p>
+
+    <!-- Add a link to the third page -->
+
+</body>
+</html>

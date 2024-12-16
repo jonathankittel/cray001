@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",          // Enables async/await and Promise
+        "lib": ["DOM", "ES2015"],    // Includes DOM and ES2015 libraries
+        "outFile": "./static/ts_output.js",
+        "rootDir": "./src",          // Source directory for TS files
+        "strict": true,
+        "esModuleInterop": true
+    },
+    "include": ["src/**/*.ts"]
+}

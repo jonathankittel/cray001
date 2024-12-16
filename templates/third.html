@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Multiplication</title>
+    <script src="{{ url_for('static', filename='ts_output.js') }}" defer></script>
+</head>
+<body>
+    <h1>Matrix Multiplication on the GPU</h1>
+    <p>Enter the size of the matrix for GPU computation:</p>
+    <form id="userForm" data-endpoint="/matrix">
+        <label for="userInput">Matrix Size (e.g., 1000):</label>
+        <input type="number" id="userInput" name="userInput" min="1" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <p id="output"></p>
+</body>
+</html>
