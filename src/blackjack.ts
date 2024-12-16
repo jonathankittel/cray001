@@ -4,7 +4,7 @@ const hitBtn = document.getElementById("hitBtn") as HTMLButtonElement;
 const stayBtn = document.getElementById("stayBtn") as HTMLButtonElement;
 
 async function startGame() {
-    const response = await fetch("/blackjack");
+    const response = await fetch("/blackjack/start");
     const data = await response.json();
     gameState.innerText = `New Game Started! 
     Your cards: ${data.user_cards.join(", ")} (Score: ${data.user_score}) 
@@ -22,9 +22,14 @@ async function hit() {
 async function stay() {
     const response = await fetch("/blackjack/stay", { method: "POST" });
     const data = await response.json();
-    gameState.innerText = `${data.message} 
-    Your cards: ${data.user_cards.join(", ")} (Score: ${data.user_score}) 
-    Dealer's cards: ${data.dealer_cards.join(", ")} (Score: ${data.dealer_score})`;
+    console.log("Final Game State:", data);
+
+    gameState.innerText = `
+        ${data.message}
+        Your cards: ${data.user_cards.join(", ")} (Score: ${data.user_score})
+        Dealer's cards: ${data.dealer_cards.join(", ")} (Score: ${data.dealer_score})
+        Fool's cards: ${data.fool_cards.join(", ")} (Score: ${data.fool_score})
+    `;
 }
 
 startBtn.addEventListener("click", startGame);

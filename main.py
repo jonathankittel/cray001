@@ -30,9 +30,6 @@ def second_page():
 def third_page():
     return render_template('third.html')  # Third Page for matrix input
 
-@app.route('/blackjack')
-def blackjack_page():
-    return render_template('blackjack.html')  # Third Page for matrix input
 
 # Route to handle POST request from TypeScript
 @app.route('/submit', methods=['POST'])
@@ -69,12 +66,20 @@ def matrix_multiplication():
         print(f"Error: {e}")
         return jsonify({"error": "An error occurred during computation."}), 500
 
+@app.route('/blackjack')
+def blackjack_page():
+    print("sending user the blackjack.html")
+    return render_template('blackjack.html')  # Third Page for matrix input
 
-@app.route('/blackjack', methods=['GET'])
+
+@app.route('/blackjack/start', methods=['GET'])
 def start_game():
     """Start a new Blackjack game."""
+    print("restarting game state")
     game.reset_game()
     state = game.get_game_state()
+    print("new game started")
+
     return jsonify({
         "message": "New game started!",
         "user_cards": state["user_cards"],
@@ -90,6 +95,7 @@ def hit():
 
     result = game.user_hit()
     state = game.get_game_state()
+    print("user chose hit")
 
     response = {
         "user_cards": state["user_cards"],
@@ -102,17 +108,23 @@ def hit():
 
 @app.route('/blackjack/stay', methods=['POST'])
 def stay():
-    """User decides to stay. Dealer's turn begins."""
+    """User decides to stay. Dealer and Fool's turns begin."""
+    # Call the logic to complete dealer and Fool's turns
     game.dealer_turn()
     state = game.get_game_state()
+    
+    # Log final game state for debugging
+    print(f"Final Game State: {state}")
 
+    # Return the final game state to the frontend
     return jsonify({
+        "message": f"Game Over! Winner: {state['winner']}",
         "user_cards": state["user_cards"],
         "user_score": state["user_score"],
         "dealer_cards": state["dealer_cards"],
         "dealer_score": state["dealer_score"],
-        "message": f"Game Over! Winner: {state['winner']}",
-        "winner": state["winner"],
+        "fool_cards": state["fool_cards"],
+        "fool_score": state["fool_score"]
     })
 
 if __name__ == '__main__':
